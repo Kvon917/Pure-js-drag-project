@@ -189,6 +189,7 @@
 		}
 		function changeStyle(arr) {
 			const original = cloneEl.style.cssText.split(';')
+            console.log('元素original',original);
 			original.pop()
 			cloneEl.style.cssText = original.concat(arr).join(';') + ';'
 		}
@@ -200,6 +201,7 @@
 			fakeSize,
 			flag
 		) {
+			console.log('flag', flag)
 			initial = {
 				offsetX,
 				offsetY,

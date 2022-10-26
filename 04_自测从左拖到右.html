@@ -13,46 +13,102 @@
 		<link rel="stylesheet" href="./04_自测从左拖到右.css" />
 	</head>
 	<body>
-		<div class="box">
-			<div class="left grid">
-				<img
-					class="left-item"
-					src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8MXx8dGVjaHxlbnwwfHx8fDE2NjIwMjM2MDQ&ixlib=rb-1.2.1&q=80&w=100"
-				/>
-				<img
-					class="left-item"
-					src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8Mnx8dGVjaHxlbnwwfHx8fDE2NjIwMjc1MzI&ixlib=rb-1.2.1&q=80&w=100"
-				/>
-				<img
-					class="left-item"
-					src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8NHx8Y2F0fGVufDB8fHx8MTY2MjAyNzg3Nw&ixlib=rb-1.2.1&q=80&w=100"
-				/>
-				<img
-					class="left-item"
-					src="https://images.unsplash.com/photo-1561948955-570b270e7c36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8OHx8Y2F0fGVufDB8fHx8MTY2MjAyNzg3Nw&ixlib=rb-1.2.1&q=80&w=100"
-				/>
-				<img
-					class="left-item"
-					src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8NXx8dGVjaHxlbnwwfHx8fDE2NjIwMjc1MzI&ixlib=rb-1.2.1&q=80&w=100"
-				/>
-				<img
-					class="left-item"
-					src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8Nnx8dGVjaHxlbnwwfHx8fDE2NjIwMjc1MzI&ixlib=rb-1.2.1&q=80&w=100"
-				/>
-				<img
-					class="left-item"
-					src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8N3x8dGVjaHxlbnwwfHx8fDE2NjIwMjc1MzI&ixlib=rb-1.2.1&q=80&w=100"
-				/>
-				<img
-					class="left-item"
-					src="https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8OHx8dGVjaHxlbnwwfHx8fDE2NjIwMjc1MzI&ixlib=rb-1.2.1&q=80&w=100"
-				/>
-				<img
-					class="left-item"
-					src="https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8OXx8dGVjaHxlbnwwfHx8fDE2NjIwMjc1MzI&ixlib=rb-1.2.1&q=80&w=100"
-				/>
+		<div id="app" class="box">
+			<div class="left">
+				<div id="list" class="grid">
+					<img
+						class="list-item"
+						src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8MXx8dGVjaHxlbnwwfHx8fDE2NjIwMjM2MDQ&ixlib=rb-1.2.1&q=80&w=100"
+					/>
+					<img
+						class="list-item"
+						src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8Mnx8dGVjaHxlbnwwfHx8fDE2NjIwMjc1MzI&ixlib=rb-1.2.1&q=80&w=100"
+					/>
+					<img
+						class="list-item"
+						src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8NHx8Y2F0fGVufDB8fHx8MTY2MjAyNzg3Nw&ixlib=rb-1.2.1&q=80&w=100"
+					/>
+					<img
+						class="list-item"
+						src="https://images.unsplash.com/photo-1561948955-570b270e7c36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8OHx8Y2F0fGVufDB8fHx8MTY2MjAyNzg3Nw&ixlib=rb-1.2.1&q=80&w=100"
+					/>
+					<img
+						class="list-item"
+						src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8NXx8dGVjaHxlbnwwfHx8fDE2NjIwMjc1MzI&ixlib=rb-1.2.1&q=80&w=100"
+					/>
+					<img
+						class="list-item"
+						src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8Nnx8dGVjaHxlbnwwfHx8fDE2NjIwMjc1MzI&ixlib=rb-1.2.1&q=80&w=100"
+					/>
+					<img
+						class="list-item"
+						src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8N3x8dGVjaHxlbnwwfHx8fDE2NjIwMjc1MzI&ixlib=rb-1.2.1&q=80&w=100"
+					/>
+					<img
+						class="list-item"
+						src="https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8OHx8dGVjaHxlbnwwfHx8fDE2NjIwMjc1MzI&ixlib=rb-1.2.1&q=80&w=100"
+					/>
+					<img
+						class="list-item"
+						src="https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8OXx8dGVjaHxlbnwwfHx8fDE2NjIwMjc1MzI&ixlib=rb-1.2.1&q=80&w=100"
+					/>
+				</div>
 			</div>
 			<div class="content"></div>
 		</div>
 	</body>
+	<script>
+		let dragging = false // 拖曳状态
+		let cloneElement = null // 克隆元素
+		let initial = {} // 初始化值
+		/**
+		 * @Author: Kongjingjing
+		 * @Date: 2022-10-26 11:28:49
+		 * @Description: 鼠标按下：1.复制一个元素出来   2. 记录鼠标的位置 3.设置是否处于拖曳状态
+		 */
+		document
+			.getElementById('list')
+			.addEventListener('mousedown', function (e) {
+				e.preventDefault() // 阻止事件的默认行为
+				if (e.target.classList.contains('list-item') && !cloneElement) {
+					// 克隆元素
+					cloneElement = e.target.cloneNode('true')
+					// 设置元素浮动
+					cloneElement.classList.add('flutter')
+					// 将元素加到列表中
+					e.target.parentElement.appendChild(cloneElement)
+					// 设置可以拖动
+					dragging = true
+					//记录鼠标的位置
+					initial.offsetX = e.offsetX
+					initial.offsetY = e.offsetY
+					initial.clientX = e.clientX
+					initial.clientY = e.clientY
+
+					// 处理克隆的元素的位置
+					// 鼠标的位置 - 鼠标相对于元素的偏移量 = 元素的位置
+					// 这样可以保证克隆体覆盖在本体上
+					moveFlutter(
+						initial.clientX - initial.offsetX,
+						initial.clientY - initial.offsetY
+					)
+				}
+			})
+		/**
+		 * @Author: Kongjingjing
+		 * @Date: 2022-10-26 17:37:28
+		 * @Description: 设置克隆元素浮动位置
+		 */
+		function moveFlutter(x, y) {
+            console.log(x,y);
+			const options = [`left: ${x}px`, `top:${y}px`]
+            console.log(options);
+			// 获取克隆元素的cssText
+			const original = cloneElement.style.cssText.split(';')
+			//  去除多余空字符串
+			original.pop()
+			cloneElement.style.cssText =
+				original.concat(options).join(';') + ';'
+		}
+	</script>
 </html>

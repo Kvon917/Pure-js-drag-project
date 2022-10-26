@@ -14,7 +14,10 @@ html {
   background-color: #fff;
   border-left: 1px solid rgba(0, 0, 0, 0.15);
 }
-.left .left-item {
+.left #list {
+  user-select: none;
+}
+.left #list .list-item {
   width: 120px;
   margin-bottom: 4px;
 }
@@ -26,4 +29,8 @@ html {
   flex: 1;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.07);
+}
+.flutter {
+  position: absolute;
+  z-index: 9999;
 }

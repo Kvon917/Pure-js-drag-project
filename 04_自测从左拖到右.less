@@ -14,9 +14,13 @@ html {
 	height: 100%;
 	background-color: #fff;
 	border-left: 1px solid rgba(0, 0, 0, 0.15);
-	.left-item {
-		width: 120px;
-		margin-bottom: 4px;
+	#list {
+		// 禁止文字选中
+		user-select: none;
+		.list-item {
+			width: 120px;
+			margin-bottom: 4px;
+		}
 	}
 }
 .grid {
@@ -29,4 +33,9 @@ html {
 	flex: 1;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.07);
+}
+.flutter {
+	position: absolute;
+	top: 0;
+	left: 0;
 }
