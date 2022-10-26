@@ -85,6 +85,8 @@
 					initial.offsetY = e.offsetY
 					initial.clientX = e.clientX
 					initial.clientY = e.clientY
+					// 本体元素的宽度
+					initial.width = e.target.offsetWidth
 					// 处理克隆的元素的位置
 					// 鼠标的位置 - 鼠标相对于元素的偏移量 = 元素的位置
 					// 这样可以保证克隆体覆盖在本体上
@@ -99,11 +101,16 @@
 			})
 		/**
 		 * @Author: Kongjingjing
-		 * @Date: 2022-10-26 17:37:28
-		 * @Description: 设置克隆元素浮动位置
+		 * @Date: 2022-10-26 22:40:52
+		 * @Description: 设置克隆元素浮动位置，缩放比例
+		 * @param {*} x 横坐标
+		 * @param {*} y 纵坐标
+		 * @param {*} d 比例
 		 */
-		function moveFlutter(x, y) {
+		function moveFlutter(x, y, d = 0) {
+			const scale = `transform:scale(2)`
 			const options = [`left: ${x}px`, `top:${y}px`]
+			scale && options.push(scale)
 			// 修改克隆元素的cssText
 			classStyle(options)
 		}
@@ -132,6 +139,7 @@
 				const options = [
 					`left:${initial.clientX - initial.offsetX}px`,
 					`top:${initial.clientY - initial.offsetY}px`,
+                    `transform:scalie(1)`
 				]
 				classStyle(options)
 				// 移出克隆的元素

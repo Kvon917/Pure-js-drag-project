@@ -189,7 +189,7 @@
 		}
 		function changeStyle(arr) {
 			const original = cloneEl.style.cssText.split(';')
-            console.log('元素original',original);
+			console.log('元素original', original)
 			original.pop()
 			cloneEl.style.cssText = original.concat(arr).join(';') + ';'
 		}

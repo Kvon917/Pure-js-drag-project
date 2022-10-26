@@ -21,6 +21,14 @@ html {
   width: 120px;
   margin-bottom: 4px;
 }
+.left #list .list-item:hover {
+  cursor: grab;
+  filter: brightness(90%);
+  transform: scale(1.02);
+}
+.left #list .list-item:active {
+  cursor: grabbing;
+}
 .grid {
   column-count: 2;
   column-gap: 0px;

@@ -20,6 +20,18 @@ html {
 		.list-item {
 			width: 120px;
 			margin-bottom: 4px;
+			&:hover {
+				// 小手
+				cursor: grab;
+				// 遮罩层
+				filter: brightness(90%);
+				// 放大
+				transform: scale(1.02);
+			}
+			// active当用鼠标交互时，它代表的是用户按下按键和松开按键之间的时间。
+			&:active {
+				cursor: grabbing;
+			}
 		}
 	}
 }
