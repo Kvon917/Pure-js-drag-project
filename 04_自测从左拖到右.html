@@ -61,6 +61,7 @@
 		let dragging = false // 拖曳状态
 		let cloneElement = null // 克隆元素
 		let initial = {} // 初始化值
+		let originalElement = null
 		/**
 		 * @Author: Kongjingjing
 		 * @Date: 2022-10-26 11:28:49
@@ -69,10 +70,8 @@
 		document
 			.getElementById('list')
 			.addEventListener('mousedown', function (e) {
-				console.log(1111)
 				e.preventDefault() // 阻止事件的默认行为
 				if (e.target.classList.contains('list-item') && !cloneElement) {
-					console.log(1)
 					// 克隆元素
 					cloneElement = e.target.cloneNode('true')
 					// 设置元素浮动
@@ -86,7 +85,6 @@
 					initial.offsetY = e.offsetY
 					initial.clientX = e.clientX
 					initial.clientY = e.clientY
-
 					// 处理克隆的元素的位置
 					// 鼠标的位置 - 鼠标相对于元素的偏移量 = 元素的位置
 					// 这样可以保证克隆体覆盖在本体上
@@ -94,6 +92,9 @@
 						initial.clientX - initial.offsetX,
 						initial.clientY - initial.offsetY
 					)
+					// 隐藏本体，效果是拖动而不是复制
+					e.target.classList.add('hide')
+					originalElement = e.target
 				}
 			})
 		/**
@@ -129,12 +130,14 @@
 				cloneElement.classList.add('is-return')
 				// 设置元素回到原来位置
 				const options = [
-					`{left:${initial.clientX - initial.offsetX}}px`,
-					`{top:${initial.clientY - initial.offsetY}px}`,
+					`left:${initial.clientX - initial.offsetX}px`,
+					`top:${initial.clientY - initial.offsetY}px`,
 				]
 				classStyle(options)
 				// 移出克隆的元素
 				setTimeout(function () {
+					//必须保存原来节点，因为这里的e.target是克隆元素
+					originalElement.classList.remove('hide')
 					cloneElement && cloneElement.remove()
 					cloneElement = null
 				}, 300)

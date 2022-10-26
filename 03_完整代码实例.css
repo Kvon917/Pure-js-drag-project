@@ -30,8 +30,8 @@ body {
 }
 .slide #list .item {
   background: rgba(0, 0, 0, 0.15);
-  transform-origin: top left;
   width: 120px;
+  transform-origin: top left;
   display: inline-block;
   break-inside: avoid;
   margin-bottom: 4px;
