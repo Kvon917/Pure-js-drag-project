@@ -1,0 +1,32 @@
+body,
+html {
+	padding: 0;
+	margin: 0;
+}
+
+.box {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+}
+.left {
+	width: 260px;
+	height: 100%;
+	background-color: #fff;
+	border-left: 1px solid rgba(0, 0, 0, 0.15);
+	.left-item {
+		width: 120px;
+		margin-bottom: 4px;
+	}
+}
+.grid {
+	// 设置显示2列
+	column-count: 2;
+	// 列与列之间的间隙为0px
+	column-gap: 0px;
+}
+.content {
+	flex: 1;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.07);
+}
