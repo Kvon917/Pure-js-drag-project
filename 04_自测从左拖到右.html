@@ -69,8 +69,10 @@
 		document
 			.getElementById('list')
 			.addEventListener('mousedown', function (e) {
+				console.log(1111)
 				e.preventDefault() // 阻止事件的默认行为
 				if (e.target.classList.contains('list-item') && !cloneElement) {
+					console.log(1)
 					// 克隆元素
 					cloneElement = e.target.cloneNode('true')
 					// 设置元素浮动
@@ -100,15 +102,9 @@
 		 * @Description: 设置克隆元素浮动位置
 		 */
 		function moveFlutter(x, y) {
-			console.log(x, y)
 			const options = [`left: ${x}px`, `top:${y}px`]
-			console.log(options)
-			// 获取克隆元素的cssText
-			const original = cloneElement.style.cssText.split(';')
-			//  去除多余空字符串
-			original.pop()
-			cloneElement.style.cssText =
-				original.concat(options).join(';') + ';'
+			// 修改克隆元素的cssText
+			classStyle(options)
 		}
 		/**
 		 * @Author: Kongjingjing
@@ -125,5 +121,31 @@
 				)
 			}
 		})
+		window.addEventListener('mouseup', function (e) {
+			// 拖动结束
+			dragging = false
+			// 有一个回退的效果
+			if (cloneElement) {
+				cloneElement.classList.add('is-return')
+				// 设置元素回到原来位置
+				const options = [
+					`{left:${initial.clientX - initial.offsetX}}px`,
+					`{top:${initial.clientY - initial.offsetY}px}`,
+				]
+				classStyle(options)
+				// 移出克隆的元素
+				setTimeout(function () {
+					cloneElement && cloneElement.remove()
+					cloneElement = null
+				}, 300)
+			}
+		})
+		function classStyle(options) {
+			const original = cloneElement.style.cssText.split(';')
+			//  去除多余空字符串
+			original.pop()
+			cloneElement.style.cssText =
+				original.concat(options).join(';') + ';'
+		}
 	</script>
 </html>
