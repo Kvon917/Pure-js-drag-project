@@ -64,7 +64,7 @@
 		/**
 		 * @Author: Kongjingjing
 		 * @Date: 2022-10-26 11:28:49
-		 * @Description: 鼠标按下：1.复制一个元素出来   2. 记录鼠标的位置 3.设置是否处于拖曳状态
+		 * @Description: 监听鼠标按下事件：1.复制一个元素出来   2. 记录鼠标的位置 3.设置是否处于拖曳状态
 		 */
 		document
 			.getElementById('list')
@@ -100,9 +100,9 @@
 		 * @Description: 设置克隆元素浮动位置
 		 */
 		function moveFlutter(x, y) {
-            console.log(x,y);
+			console.log(x, y)
 			const options = [`left: ${x}px`, `top:${y}px`]
-            console.log(options);
+			console.log(options)
 			// 获取克隆元素的cssText
 			const original = cloneElement.style.cssText.split(';')
 			//  去除多余空字符串
@@ -110,5 +110,20 @@
 			cloneElement.style.cssText =
 				original.concat(options).join(';') + ';'
 		}
+		/**
+		 * @Author: Kongjingjing
+		 * @Date: 2022-10-26 20:05:06
+		 * @Description: 监听鼠标移动事件
+		 * @param {*} mousemove
+		 * @param {*} function
+		 */
+		window.addEventListener('mousemove', function (e) {
+			if (dragging && cloneElement) {
+				moveFlutter(
+					e.clientX - initial.offsetX,
+					e.clientY - initial.offsetY
+				)
+			}
+		})
 	</script>
 </html>
