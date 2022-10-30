@@ -76,19 +76,16 @@
 					cloneElement = e.target.cloneNode(true)
 					// 设置元素浮动
 					cloneElement.classList.add('flutter')
-					// 将元素加到列表中
-					e.target.parentElement.appendChild(cloneElement)
 					// 设置可以拖动
 					dragging = true
-					//记录鼠标的位置
-					initial.offsetX = e.offsetX
-					initial.offsetY = e.offsetY
-					initial.clientX = e.clientX
-					initial.clientY = e.clientY
-					// 本体元素的宽度
-					initial.width = e.target.offsetWidth
-					// 假设所有的原图大小都是200
-					initial.realSize = 200
+					const fakeSize = parseInt(100 * randomNum(1, 2))
+					//初始化数据
+					init(
+						e,
+						{ width: e.target.offsetWidth },
+						fakeSize,
+						Math.random()
+					)
 					// 处理克隆的元素的位置
 					// 鼠标的位置 - 鼠标相对于元素的偏移量 = 元素的位置
 					// 这样可以保证克隆体覆盖在本体上
@@ -96,6 +93,13 @@
 						initial.clientX - initial.offsetX,
 						initial.clientY - initial.offsetY
 					)
+					// 模拟加载原图的过程
+					loadOriginImage(
+						cloneElement.src.replace(/w=100/g, 'w=' + fakeSize),
+						initial.flag
+					)
+					// 将元素加到列表中
+					e.target.parentElement.appendChild(cloneElement)
 					// 隐藏本体，效果是拖动而不是复制
 					e.target.classList.add('hide')
 					originalElement = e.target
@@ -110,13 +114,14 @@
 		 * @param {*} d 比例
 		 */
 		function moveFlutter(x, y, d = 0) {
-			let scale = ''
-			if (d && d + initial.width < initial.realSize) {
-				scale = `transform:scale(${
-					(d + initial.width) / initial.width
-				})`
-			}
+			console.log(initial.width + d, initial.fakeSize)
+			const scale = d
+				? initial.width + d <= initial.fakeSize
+					? `transform: scale(${(initial.width + d) / initial.width})`
+					: null
+				: null
 			const options = [`left: ${x}px`, `top:${y}px`]
+			console.log(scale)
 			scale && options.push(scale)
 			// 修改克隆元素的cssText
 			classStyle(options)
@@ -185,11 +190,9 @@
 		 * @Description: 两点之间的距离作为缩放比例
 		 * @param {*} e
 		 */
-		function distance(e) {
+		function distance({ clientX, clientY }) {
 			// 对象解构获取原始坐标
 			const { clientX: x, clientY: y } = initial
-			// 当前坐标
-			const { clientX, clientY } = e
 			// 两点之间的距离的公式
 			const a = clientX - x
 			const b = clientY - y
@@ -237,7 +240,8 @@
 			const newElement = cloneElement.cloneNode(true)
 			// 移出浮动定位
 			newElement.classList.remove('flutter')
-
+			// 粘贴的也是'原图'
+			newElement.src = cloneElement.getAttribute('raw')
 			newElement.style.cssText = `left:${x - initial.offsetX}px;top:${
 				y - initial.offsetY
 			}px;`
@@ -245,6 +249,58 @@
 			// 删除克隆元素
 			cloneElement && cloneElement.remove()
 			cloneElement = null
+			// 还原本体元素
+			setTimeout(() => {
+				originalElement.classList.remove('hide')
+			}, 300)
+		}
+		/**
+		 * @Author: Kongjingjing
+		 * @Date: 2022-10-30 17:12:00
+		 * @Description: 加载原图
+		 * @param {*} url
+		 * @param {*} flag
+		 */
+		function loadOriginImage(url, flag) {
+			cloneElement.setAttribute('raw', url)
+			const image = new Image()
+			image.src = url
+			image.onload = function () {
+				cloneElement &&
+					initial.flag === flag &&
+					(cloneElement.src = url)
+			}
+		}
+		/**
+		 * @Author: Kongjingjing
+		 * @Date: 2022-10-30 17:16:05
+		 * @Description: 随机数
+		 * @param {*} n
+		 * @param {*} m
+		 */
+		function randomNum(n, m) {
+			return Math.random() * (m - n) + n
+		}
+		/**
+		 * @Author: Kongjingjing
+		 * @Date: 2022-10-30 17:23:18
+		 * @Description: 初始化数据
+		 */
+		function init(
+			{ offsetX, offsetY, clientX, clientY },
+			{ width },
+			fakeSize,
+			flag
+		) {
+			initial = {
+				offsetX,
+				offsetY,
+				clientX,
+				clientY,
+				width,
+				fakeSize,
+				flag,
+			}
 		}
 	</script>
 </html>
