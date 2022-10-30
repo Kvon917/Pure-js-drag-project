@@ -54,7 +54,7 @@
 					/>
 				</div>
 			</div>
-			<div class="content"></div>
+			<div id="content" class="content"></div>
 		</div>
 	</body>
 	<script>
@@ -73,7 +73,7 @@
 				e.preventDefault() // 阻止事件的默认行为
 				if (e.target.classList.contains('list-item') && !cloneElement) {
 					// 克隆元素
-					cloneElement = e.target.cloneNode('true')
+					cloneElement = e.target.cloneNode(true)
 					// 设置元素浮动
 					cloneElement.classList.add('flutter')
 					// 将元素加到列表中
@@ -194,6 +194,57 @@
 			const a = clientX - x
 			const b = clientY - y
 			return Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2))
+		}
+		/**
+		 * @Author: Kongjingjing
+		 * @Date: 2022-10-30 15:49:08
+		 * @Description: 监听画布上鼠标的抬起事件
+		 */
+		document
+			.getElementById('content')
+			.addEventListener('mouseup', function (e) {
+				// 移动的位置已经有其他元素
+				if (e.target.id !== 'content') {
+					const lostX =
+						e.x -
+						document
+							.getElementById('content')
+							.getBoundingClientRect().left
+					const lostY =
+						e.y -
+						document
+							.getElementById('content')
+							.getBoundingClientRect().top
+					console.log(lostX, lostY)
+					paste(lostX, lostY)
+				} else {
+					// 移动的位置是干净的
+					paste(e.offsetX, e.offsetY)
+				}
+			})
+
+		/**
+		 * @Author: Kongjingjing
+		 * @Date: 2022-10-27 15:46:41
+		 * @Description: 在画布中粘贴元素
+		 * @param {*} x 鼠标位置x
+		 * @param {*} y 鼠标位置y
+		 */
+		function paste(x, y) {
+			if (!cloneElement) {
+				return
+			}
+			const newElement = cloneElement.cloneNode(true)
+			// 移出浮动定位
+			newElement.classList.remove('flutter')
+
+			newElement.style.cssText = `left:${x - initial.offsetX}px;top:${
+				y - initial.offsetY
+			}px;`
+			document.getElementById('content').appendChild(newElement)
+			// 删除克隆元素
+			cloneElement && cloneElement.remove()
+			cloneElement = null
 		}
 	</script>
 </html>
